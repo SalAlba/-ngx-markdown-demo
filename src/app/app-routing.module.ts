@@ -5,12 +5,12 @@ const routes: Routes = [
   {
     path: 'get-started',
     loadChildren: () => import('./get-started/get-started.module').then(m => m.GetStartedModule),
-    data: { label: 'Get Started' },
+    data: { label: 'Get Started', icon: 'get-started' },
   },
   {
     path: 'postes',
     loadChildren: () => import('./modules/postes/postes.module').then(m => m.PostesModule),
-    data: { label: 'Salem' },
+    data: { label: 'Salem', icon: 'cheat-sheet' },
   },
   // {
   //   path: 'cheat-sheet',
