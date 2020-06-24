@@ -19,6 +19,7 @@ export class PosteComponent implements OnInit {
   headings: Element[];
   // post: Observable<any>;
   post = {};
+  mdURL = '';
 
   constructor(
     private elementRef: ElementRef<HTMLElement>,
@@ -29,7 +30,7 @@ export class PosteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(d => this.post = this.postesService.getPosteByLink(d.link));
+    this.route.params.subscribe(d => this.mdURL = this.postesService.getPosteByLink(d.link).mdURL );
     // this.route.params.subscribe(d => this.post = this.postesService.get_postes_by_link(d.link));
 
     // this.post.subscribe(d => {
