@@ -15,8 +15,8 @@ export class PostesComponent {
   ) { }
 
   onLoad() {
-    // this.stripContent();
-    // this.setHeadings();
+    this.stripContent();
+    this.setHeadings();
   }
 
   private setHeadings() {

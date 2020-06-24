@@ -3,35 +3,35 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'get-started',
-    loadChildren: () => import('./get-started/get-started.module').then(m => m.GetStartedModule),
-    data: { label: 'Get Started', icon: 'get-started' },
-  },
-  {
     path: 'postes',
     loadChildren: () => import('./modules/postes/postes.module').then(m => m.PostesModule),
     data: { label: 'Salem', icon: 'cheat-sheet' },
   },
-  // {
-  //   path: 'cheat-sheet',
-  //   loadChildren: () => import('./cheat-sheet/cheat-sheet.module').then(m => m.CheatSheetModule),
-  //   data: { label: 'Cheat Sheet' },
-  // },
-  // {
-  //   path: 'syntax-highlight',
-  //   loadChildren: () => import('./syntax-highlight/syntax-highlight.module').then(m => m.SyntaxHighlightModule),
-  //   data: { label: 'Syntax Highlight' },
-  // },
-  // {
-  //   path: 'bindings',
-  //   loadChildren: () => import('./bindings/bindings.module').then(m => m.BindingsModule),
-  //   data: { label: 'Bindings' },
-  // },
-  // {
-  //   path: 'plugins',
-  //   loadChildren: () => import('./plugins/plugins.module').then(m => m.PluginsModule),
-  //   data: { label: 'Plugins' },
-  // },
+  {
+    path: 'get-started',
+    loadChildren: () => import('./modules/get-started/get-started.module').then(m => m.GetStartedModule),
+    data: { label: 'Get Started', icon: 'get-started' },
+  },
+  {
+    path: 'cheat-sheet',
+    loadChildren: () => import('./modules/cheat-sheet/cheat-sheet.module').then(m => m.CheatSheetModule),
+    data: { label: 'Cheat Sheet', icon: 'cheat-sheet' },
+  },
+  {
+    path: 'syntax-highlight',
+    loadChildren: () => import('./modules/syntax-highlight/syntax-highlight.module').then(m => m.SyntaxHighlightModule),
+    data: { label: 'Syntax Highlight', icon: 'syntax-highlight' },
+  },
+  {
+    path: 'bindings',
+    loadChildren: () => import('./modules/bindings/bindings.module').then(m => m.BindingsModule),
+    data: { label: 'Bindings', icon: 'bindings' },
+  },
+  {
+    path: 'plugins',
+    loadChildren: () => import('./plugins/plugins.module').then(m => m.PluginsModule),
+    data: { label: 'Plugins', icon: 'plugins' },
+  },
   {
     path: '**',
     redirectTo: 'get-started',
