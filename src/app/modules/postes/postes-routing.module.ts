@@ -2,11 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { PostesComponent } from './components/postes/postes.component';
+import { PosteComponent } from "./components/poste/poste.component";
 
 const routes: Routes = [
   {
     path: '',
     component: PostesComponent,
+  },
+  {
+    path: ':link',
+    component: PosteComponent,
   },
 ];
 

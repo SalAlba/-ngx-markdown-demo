@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Title, Meta } from '@angular/platform-browser';
 
 // services ...
-// import { PostesService } from '../../../../core/http/postes/postes.service';
+import { PosteService } from '../../../../shared/providers/poste.service';
 
 // import { Post } from '../../../../shared/models/post.model';
 // import { DESCRITPTION } from '../../../../shared/mock/mock-desc';
@@ -16,18 +16,20 @@ import { Title, Meta } from '@angular/platform-browser';
   styleUrls: ['./poste.component.css']
 })
 export class PosteComponent implements OnInit {
-
-  post: Observable<any>;
+  headings: Element[];
+  // post: Observable<any>;
+  post = {};
 
   constructor(
-    // private route: ActivatedRoute,
-    // private postesService: PostesService,
+    private elementRef: ElementRef<HTMLElement>,
+    private route: ActivatedRoute,
+    private postesService: PosteService,
     // private title: Title,
     // private meta: Meta
   ) { }
 
   ngOnInit() {
-    // this.route.params.subscribe(d => this.postesService.get_postes_by_link(d.link).subscribe(p => this.post = p));
+    this.route.params.subscribe(d => this.post = this.postesService.getPosteByLink(d.link));
     // this.route.params.subscribe(d => this.post = this.postesService.get_postes_by_link(d.link));
 
     // this.post.subscribe(d => {
@@ -41,19 +43,24 @@ export class PosteComponent implements OnInit {
 
   }
 
-  showBasicPost(postType: any) {
-    if (postType === 'markdown') {
-      return true;
-    }
-    return false;
+  onLoad() {
+    this.stripContent();
+    this.setHeadings();
   }
 
-  onLoad(e: any) {
-    console.log(e);
+  private setHeadings() {
+    const headings = [];
+    this.elementRef.nativeElement
+      .querySelectorAll('h2')
+      .forEach(x => headings.push(x));
+    this.headings = headings;
   }
 
-  onError(e: any) {
-    console.log(e);
-  }
+  private stripContent() {
+    this.elementRef.nativeElement
+      .querySelector('markdown')
+      .querySelectorAll('markdown > p:nth-child(-n + 2), #ngx-markdown, #table-of-contents + ul, #table-of-contents')
+      .forEach(x => x.remove());
+  } F
 
 }

@@ -1,5 +1,6 @@
-<div class="row">
-    <!-- <div class="col-2"></div>
+<!-- <div class="row">
+    <h1>Poste one</h1>
+    <div class="col-2"></div>
     <div class="col-8" [hidden]="showBasicPost((post | async)?.postType)">
         <h1>{{(post | async)?.title}}</h1>
         <p [innerHTML]="(post | async)?.description"></p>
@@ -9,5 +10,9 @@
     <div class="col-8" [hidden]="!showBasicPost((post | async)?.postType)">
         <div markdown katex [src]="(post | async)?.markdownUrl"  (error)="onError($event)"></div>
     </div>
-    <div class="col-2"></div> -->
-</div>
+    <div class="col-2"></div>
+</div> -->
+
+<app-scrollspy-nav-layout [headings]="headings">
+    <markdown emoji [src]="post.mdURL" (load)="onLoad()"></markdown>
+</app-scrollspy-nav-layout>

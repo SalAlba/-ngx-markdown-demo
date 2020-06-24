@@ -8,6 +8,7 @@ import { SharedModule } from '@shared/shared.module';
 
 // components ...
 import { PostesComponent } from './components/postes/postes.component';
+import { PosteComponent } from "./components/poste/poste.component";
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { PostesComponent } from './components/postes/postes.component';
     ScrollspyNavLayoutModule,
     SharedModule,
   ],
-  declarations: [PostesComponent],
+  declarations: [PostesComponent, PosteComponent],
 })
 export class PostesModule { }

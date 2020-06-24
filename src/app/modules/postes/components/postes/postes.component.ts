@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, ElementRef } from '@angular/core';
 
+// services ...
+import { PosteService } from '../../../../shared/providers/poste.service';
+
 @Component({
   selector: 'app-postes',
   templateUrl: './postes.component.html',
@@ -9,14 +12,18 @@ import { ChangeDetectionStrategy, Component, ElementRef } from '@angular/core';
 export class PostesComponent {
 
   headings: Element[];
+  postes;
 
   constructor(
     private elementRef: ElementRef<HTMLElement>,
-  ) { }
+    private postesService: PosteService,
+  ) {
+    this.postes = postesService.getAllpostes()
+   }
 
   onLoad() {
-    this.stripContent();
-    this.setHeadings();
+    // this.stripContent();
+    // this.setHeadings();
   }
 
   private setHeadings() {
