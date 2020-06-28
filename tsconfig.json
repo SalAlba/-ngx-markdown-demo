@@ -20,6 +20,7 @@
     ],
     "paths": {
       "@app/*": ["src/app/*"],
+      "@environments/*": ["src/environments/*"],
       "@modules/*": ["src/app/modules/*"],
       "@shared/*": ["src/app/shared/*"],
       "ngx-markdown": ["lib/src"]

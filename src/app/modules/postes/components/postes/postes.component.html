@@ -3,12 +3,45 @@
   <markdown emoji src="https://raw.githubusercontent.com/jfcere/ngx-markdown/master/README.md" (load)="onLoad()"></markdown>
 </app-scrollspy-nav-layout> -->
 
-<div class="container">
-  <div class="row">
-    <ul>
-      <li *ngFor="let poste of postes">
-        <a [routerLink]="poste.link">{{poste.title}}</a>
-      </li>
-    </ul>
-  </div>
-</div>
+<app-scrollspy-nav-layout [headings]="headings" *ngIf="!postes">
+  <markdown emoji> :see_no_evil: :hear_no_evil: :speak_no_evil: Loading ...</markdown>
+</app-scrollspy-nav-layout>
+
+<app-scrollspy-nav-layout [headings]="headings" *ngIf="postes">
+  <h1 id="getting-started">All Postes</h1>
+  <!-- <div class="container">
+    <div class="row">
+      <ul>
+        <li *ngFor="let poste of postes">
+          <a [routerLink]="poste.slug">{{poste.title}}</a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+
+  <mat-card class="Card" *ngFor="let poste of postes">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{poste.title}}</mat-card-title>
+      <a [routerLink]="poste.slug">
+        <!-- <img src="assets/icon-cheat-sheet.svg"> -->
+        <span>see more</span>
+      </a>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <img mat-card-image [src]="getBannerImage(poste)" alt="poste.slug">
+    <!--  -->
+    <!-- <mat-card-content>
+      <p>
+        The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+        A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+        bred for hunting.
+      </p>
+    </mat-card-content> -->
+    <!--  -->
+    <!-- <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions> -->
+  </mat-card>
+</app-scrollspy-nav-layout>

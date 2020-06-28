@@ -10,7 +10,7 @@ const routes: Routes = [
     component: PostesComponent,
   },
   {
-    path: ':link',
+    path: ':slug',
     component: PosteComponent,
   },
 ];

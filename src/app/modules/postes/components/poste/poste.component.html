@@ -13,6 +13,11 @@
     <div class="col-2"></div>
 </div> -->
 
+<!-- <app-scrollspy-nav-layout [headings]="headings">
+    <markdown emoji [src]="(post_ | async)?.rawPostURL" (load)="onLoad()" (error)="onError($event)"></markdown>
+</app-scrollspy-nav-layout> -->
+
 <app-scrollspy-nav-layout [headings]="headings">
-    <markdown emoji [src]="mdURL" (load)="onLoad()"></markdown>
+    <markdown emoji *ngIf=!post> :see_no_evil: :hear_no_evil: :speak_no_evil: Loading ...</markdown>
+    <markdown emoji [src]="post?.rawPostURL" (load)="onLoad()" *ngIf=post></markdown>
 </app-scrollspy-nav-layout>

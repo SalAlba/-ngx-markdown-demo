@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { Title, Meta } from '@angular/platform-browser';
 
 // services ...
-import { PosteService } from '../../../../shared/providers/poste.service';
+import { PosteService } from '@shared/providers/poste.service';
 
-// import { Post } from '../../../../shared/models/post.model';
-// import { DESCRITPTION } from '../../../../shared/mock/mock-desc';
+// models ...
+import { Post } from '@shared/models/post';
+
 
 @Component({
   selector: 'app-poste',
@@ -17,9 +17,9 @@ import { PosteService } from '../../../../shared/providers/poste.service';
 })
 export class PosteComponent implements OnInit {
   headings: Element[];
-  // post: Observable<any>;
-  post = {};
-  mdURL = '';
+  post: Post;
+  // post_: Observable<Post>;
+  // rawPostURL = '';
 
   constructor(
     private elementRef: ElementRef<HTMLElement>,
@@ -30,18 +30,14 @@ export class PosteComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.params.subscribe(d => this.mdURL = this.postesService.getPosteByLink(d.link).mdURL );
-    // this.route.params.subscribe(d => this.post = this.postesService.get_postes_by_link(d.link));
-
-    // this.post.subscribe(d => {
-    //   this.title.setTitle(d.title);
-    //   this.meta.addTag({
-    //     name: 'description',
-    //     content: DESCRITPTION
-    //     // content: d.description
-    //   });
-    // });
-
+    this.route.params.subscribe(
+      urlParams => this.postesService.getPosteByLink(urlParams.slug).subscribe(
+        data => {
+          this.post = data['post'];
+        },
+        error => console.log('Post error : ', error)
+      )
+    );
   }
 
   onLoad() {
@@ -62,6 +58,10 @@ export class PosteComponent implements OnInit {
       .querySelector('markdown')
       .querySelectorAll('markdown > p:nth-child(-n + 2), #ngx-markdown, #table-of-contents + ul, #table-of-contents')
       .forEach(x => x.remove());
-  } F
+  }
+
+  onError(e: any) {
+    console.log('>>>>>>>>> ', e)
+  }
 
 }
