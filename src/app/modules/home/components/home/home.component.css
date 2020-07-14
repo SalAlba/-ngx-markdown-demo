@@ -1,0 +1,37 @@
+.radius{
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+
+.photo{
+    background-image: url('/assets/salem-albarudy.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%; 
+}
+
+.grid1{
+    background-color: chocolate;
+}
+
+.grid1 p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.grid2{
+    background-color: red;
+}
+
+
+.mat-grid-tile .mat-figure {
+    /* justify-content: flex-start !important ;
+    align-items: flex-start !important; */
+    /* text-align: left; */
+    /* padding: 0; */
+}
